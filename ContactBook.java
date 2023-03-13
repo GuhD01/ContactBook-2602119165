@@ -26,10 +26,24 @@ public class ContactBook {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter name: ");
         String name = scanner.nextLine();
-        System.out.print("Enter phone number: ");
-        String phone = scanner.nextLine();
-        System.out.print("Enter email address: ");
-        String email = scanner.nextLine();
+        String phone;
+        while (true) {
+            System.out.print("Enter phone number (12 digits): ");
+            phone = scanner.nextLine();
+            if (phone.length() == 12) {
+                break;
+            }
+            System.out.println("Phone number must be 12 digits!");
+        }
+        String email;
+        while (true) {
+            System.out.print("Enter email address: ");
+            email = scanner.nextLine();
+            if (email.contains("@")) {
+                break;
+            }
+            System.out.println("Email address must contain '@'!");
+        }
 
         Contact contact = new Contact(name, phone, email);
         if (head == null) {
